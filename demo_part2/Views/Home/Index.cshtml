@@ -6,8 +6,32 @@
 
 <div class="text-center">
 
-    <!--form to register-->
+    <!--form to register method and asp-action-->
     <form method="post" asp-action="Register_user">
+
+        <label>Name: </label>
+        <input type="text" asp-for="Username" required/>
+        <br />
+
+        <label>Email: </label>
+        <input type="email" asp-for="Email" required />
+        <br />
+
+        <label>Role: </label>
+        <select asp-for="Role" required>
+            <option selected disabled> select role here</option>
+            <option value="lecture">Lecture</option>
+            <option value="pm">PM</option>
+        </select>
+        <br />
+
+        <label>Password: </label>
+        <input type="password" asp-for="Password" required />
+        <br />
+
+        
+        <input type="submit" value="Register now" />
+       
 
     </form>
 
