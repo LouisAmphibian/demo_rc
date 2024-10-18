@@ -121,6 +121,12 @@ namespace demo_part2.Controllers
 
         }
 
+
+        public IActionResult Dashboard()
+        {
+            return View();
+        }
+
         [HttpPost]
         public IActionResult Claim_Sub(Claim insert)
         {
