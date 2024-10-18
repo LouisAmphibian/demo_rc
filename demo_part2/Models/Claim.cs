@@ -14,7 +14,7 @@ namespace demo_part2.Models
         //Always connect when having ti use sql
         Connection connect = new Connection();
 
-        public string insert_user(string module, string hours_worked, string rate, string note)
+        public string insert_claim(string module, string hours_worked, string rate, string note)
         {
             //temp  variablo for message
             string message = "";

@@ -29,7 +29,7 @@ namespace demo_part2.Models
                     connects.Open();
 
                     //query-to retrieve
-                    string query = "SELECT * FROM users WHERE email ='" + emails + "' and role '" + roles + "'and password = '" + passwords + "';";
+                    string query = "SELECT * FROM users WHERE email ='" + emails + "' and role ='" + roles + "'and password = '" + passwords + "';";
 
                     //string query = "SELECT * FROM users WHERE email = @Email AND role = @Role AND password = @Password"
 
