@@ -33,7 +33,7 @@ namespace demo_part2.Models
                     connects.Open();
 
                     //query
-                    string query = "insert into users values('" + username + "' ,'" + email + "', '"+role + "','" + password + "')";
+                    string query = "insert into users values('" + username + "' ,'" + email + "', '"+ password + "','" + role + "')";
 
                     //execute command to insert user data
                     using (SqlCommand add_new_user = new SqlCommand(query, connects))

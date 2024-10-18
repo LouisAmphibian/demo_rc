@@ -1,0 +1,32 @@
+﻿@model demo_part2.Models.Claim
+
+@{
+    ViewData["Title"] = "Dashboard Page";
+}
+
+<a href="/Home/View_Claim/">View Cliams</a>
+<a href="/Home/Approve/">Approve cliam</a>
+
+<br /> <br/>
+
+<form method="post" asp-action="Claim_Sub">
+    
+    <label>Module name</label>
+    <input type="text" asp-for="User_Name" required/>
+    <br/>
+
+    <label>Hours Worked</label>
+    <input type="text" asp-for="Hours_worked" required />
+    <br />
+
+    <label>Hours per rate on module</label>
+    <input type="text" asp-for="Hour_Rate" required />
+    <br />
+
+    <label>Description</label>
+    <textarea type="text" asp-for="Description" required></textarea>/>
+    <br />
+
+    <input type="submit" value="Submit claim"/>
+
+</form>

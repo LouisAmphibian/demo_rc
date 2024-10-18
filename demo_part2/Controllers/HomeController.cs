@@ -113,7 +113,7 @@ namespace demo_part2.Controllers
                 Console.WriteLine(message);
                 return RedirectToAction("Dashboard", "Home");
             }
-            else 
+            else
             {
                 Console.WriteLine(message);
                 return RedirectToAction("Login", "Home");
@@ -122,5 +122,27 @@ namespace demo_part2.Controllers
         }
 
 
+        public IActionResult Claim_Sub(Claim insert)
+        {
+            //assign 
+            string module_name = insert.User_Name;
+            string hour_work = insert.Hours_worked;
+            string hour_rate = insert.Hour_Rate;
+            string description = insert.Description;
+
+            string message = insert.insert_claim(module_name, hour_work, hour_rate, description);
+
+
+            if (message == "done")
+            {
+                Console.WriteLine(message);
+                return RedirectToAction("Dashboard", "Home");
+            }
+            else
+            {
+                Console.WriteLine(message);
+                return RedirectToAction("Dashboard", "Home");
+            }
+        }
     }
 }
