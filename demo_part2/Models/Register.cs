@@ -19,7 +19,7 @@ namespace demo_part2.Models
 
 
         //inserting user data
-        public string insert_user(string username, string email, string roles, string password)
+        public string insert_user(string username, string email, string role, string password)
         {
             //temp  variablo for message
             string message = "";
@@ -33,7 +33,7 @@ namespace demo_part2.Models
                     connects.Open();
 
                     //query
-                    string query = "insert into users values('" + username + "' ,'" + email + "', '" + password + "')";
+                    string query = "insert into users values('" + username + "' ,'" + email + "', '"+role + "','" + password + "')";
 
                     //execute command to insert user data
                     using (SqlCommand add_new_user = new SqlCommand(query, connects))
