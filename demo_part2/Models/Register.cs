@@ -1,4 +1,6 @@
-﻿namespace demo_part2.Models
+﻿using System.Data.SqlClient;
+
+namespace demo_part2.Models
 {
     public class Register
     {
@@ -13,14 +15,49 @@
 
 
         //connection string class
-        Connection connection = new Connection();
+        Connection connect = new Connection();
 
 
         //inserting user data
         public string insert_user(string username, string email, string roles, string password)
         {
+            //temp  variablo for message
+            string message = "";
 
-            return  "";
+            //connect to database
+            try
+            {
+                //open the connection
+                using (SqlConnection connects = new SqlConnection(connect.connecting()))
+                {
+                    connects.Open();
+
+                    //query
+                    string query = "insert into users values('" + username + "' ,'" + email + "', '" + password + "')";
+
+                    //execute command to insert user data
+                    using (SqlCommand add_new_user = new SqlCommand(query, connects))
+                    {
+                        //then execute it
+                        add_new_user.ExecuteNonQuery();
+
+                        message = "done";
+                    }
+
+
+                    //then close it
+                    connects.Close();
+
+                }
+
+            }
+            catch (IOException error) 
+            {
+                message = error.Message;
+            }
+
+            
+            return message;
         }
     }
 }

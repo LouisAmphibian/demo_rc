@@ -62,10 +62,33 @@ namespace demo_part2.Controllers
             string password = add_user.Password;
             string role = add_user.Role;
 
+            /*
             //check if all are collected
             Console.WriteLine("Name: " + name + "\nEmail: " + email + "\nRole: " + role);
+            */
 
-            return RedirectToAction("Index", "Home");
+            //pass all the values to insert method
+            string message = add_user.insert_user(name, email, password, role);
+
+            //the check if the user inserted
+            if (message == "done")
+            {
+                //track error output
+                Console.WriteLine(message);
+
+                //Redirect to logon
+                return RedirectToAction("Login", "Home");
+
+            }
+            else
+            {
+                //track error output
+                Console.WriteLine(message);
+
+                //Redirect
+                return RedirectToAction("Index", "Home");
+            }
+           
         }
 
 
