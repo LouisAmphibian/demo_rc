@@ -121,7 +121,7 @@ namespace demo_part2.Controllers
 
         }
 
-
+        [HttpPost]
         public IActionResult Claim_Sub(Claim insert)
         {
             //assign 
