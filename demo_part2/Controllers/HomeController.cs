@@ -27,13 +27,14 @@ namespace demo_part2.Controllers
                     //open the connection
                     connect.Open();
                     Console.WriteLine("connected");
-                    connect.Close();   
+                    connect.Close();
                 }
-                
 
-            }catch (IOException error)
+
+            }
+            catch (IOException error)
             {
-                Console.WriteLine("Error: "+ error.Message);
+                Console.WriteLine("Error: " + error.Message);
             }
 
             return View();
@@ -49,5 +50,24 @@ namespace demo_part2.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        //http post for the register
+        //Form the register form
+        [HttpPost]
+        public IActionResult Register_user(Register add_user)
+        {
+            //collect user data
+            string name = add_user.Username;
+            string email = add_user.Email;
+            string password = add_user.Password;
+            string role = add_user.Role;
+
+            //check if all are collected
+            Console.WriteLine("Name: " + name + "\nEmail: " + email + "\nRole: " + role);
+
+            return RedirectToAction("Index", "Home");
+        }
+
+
     }
 }

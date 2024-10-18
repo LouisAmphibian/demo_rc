@@ -9,7 +9,18 @@
 
         public string? Role { get; set; }
 
-        public string? password { get; set; }   
+        public string? Password { get; set; }
 
+
+        //connection string class
+        Connection connection = new Connection();
+
+
+        //inserting user data
+        public string insert_user(string username, string email, string roles, string password)
+        {
+
+            return  "";
+        }
     }
 }
