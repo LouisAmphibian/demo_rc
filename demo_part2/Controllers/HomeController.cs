@@ -88,7 +88,37 @@ namespace demo_part2.Controllers
                 //Redirect
                 return RedirectToAction("Index", "Home");
             }
-           
+
+        }
+
+        //for login page
+        public IActionResult Login()
+        {
+            return View();
+        }
+
+        //login page POST
+        [HttpPost]
+        public IActionResult Login_user(Check_login user)
+        {
+            //then assign 
+            string email = user.Email;
+            string password = user.Password;
+            string role = user.Role;
+
+            string message = user.login_user(email, password, role);
+
+            if (message == "found")
+            {
+                Console.WriteLine(message);
+                return RedirectToAction("Dashboard", "Home");
+            }
+            else 
+            {
+                Console.WriteLine(message);
+                return RedirectToAction("Login", "Home");
+            }
+
         }
 
 
