@@ -106,7 +106,7 @@ namespace demo_part2.Controllers
             string password = user.Password;
             string role = user.Role;
 
-            string message = user.login_user(email, password, role);
+            string message = user.login_user(email, role, password);
 
             if (message == "found")
             {
@@ -122,10 +122,7 @@ namespace demo_part2.Controllers
         }
 
 
-        public IActionResult Dashboard()
-        {
-            return View();
-        }
+       
 
         [HttpPost]
         public IActionResult Claim_Sub(Claim insert)
@@ -149,6 +146,13 @@ namespace demo_part2.Controllers
                 Console.WriteLine(message);
                 return RedirectToAction("Dashboard", "Home");
             }
+        }
+
+
+        //OPEN Dash
+        public IActionResult Dashboard()
+        {
+            return View();
         }
     }
 }
