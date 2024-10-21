@@ -9,7 +9,7 @@
 
 <br /> <br/>
 
-<form method="post" asp-action="Claim_Sub">
+<form method="post" asp-action="Claim_Sub" enctype="multipart/form-data">
     
     <label>Module name</label>
     <input type="text" asp-for="User_Name" required/>
@@ -24,8 +24,14 @@
     <br />
 
     <label>Description</label>
-    <textarea type="text" asp-for="Description" required></textarea>/>
+    <textarea type="text" asp-for="Description" required></textarea>
     <br />
+
+   
+    <label> Upload file [option]</label>
+    <input type="file" name="File" /> <!--accept=".pdf, .docx, .png, .jpeg"-->
+
+
 
     <input type="submit" value="Submit claim"/>
 

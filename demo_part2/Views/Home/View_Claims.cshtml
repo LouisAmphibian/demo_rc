@@ -1,0 +1,33 @@
+﻿@model demo_part2.Models.Get_Claims
+
+
+<table>
+    <thead>
+        <th>User email</th>
+        <th>Module</th>
+        <th>User Id</th>
+        <th>Hour Rate</th>
+        <th>NO</th>
+        <th>Total Amount</th>
+        <th>Status</th>
+    </thead>
+
+    <tbody>
+
+        @for(int count = 0; count < @Model.Email.Count; count++)
+        {
+            <tr>
+                <td>@Model.Email[count]</td>
+                <td>@Model.Module[count]</td>
+                <td>@Model.Hours[count]</td>
+                <td>@Model.Rate[count]</td>
+                <td>@Model.Note[count]</td>
+                <td>@Model.Total[count]</td>
+                <td> <a href="@Url.Content=~\pdf\@Model.Filename[count]">@Model.Filename[count]</a></td>
+                <td>@Model.Status[count]</td>
+            </tr>
+        }
+        
+    </tbody>
+
+</table>

@@ -14,7 +14,7 @@ namespace demo_part2.Models
         //Always connect when having ti use sql
         Connection connect = new Connection();
 
-        public string insert_claim(string module, string hours_worked, string rate, string note)
+        public string insert_claim(string module, string hours_worked, string rate, string note, string filename)
         {
             //temp  variablo for message
             string message = "";
@@ -26,7 +26,7 @@ namespace demo_part2.Models
             string total = "" + (int.Parse(hours_worked) * int.Parse(rate));
 
             //
-            string query = "INSERT INTO claiming VALUES('" + user_Email + "','" + module + "','" + user_Id + "','" + hours_worked + "','" + rate + "','" + note + "','non','none','" + total + "','pending');";
+            string query = "INSERT INTO claiming VALUES('" + user_Email + "','" + module + "','" + user_Id + "','" + hours_worked + "','" + rate + "','" + note + "','non','none','" + total + "','"+filename+"','pending');";
 
             try
             {
@@ -38,9 +38,9 @@ namespace demo_part2.Models
                     //string query = "SELECT * FROM users WHERE email = @Email AND role = @Role AND password = @Password"
 
                     //prepare to execute
-                    using (SqlCommand done = new SqlCommand(query, connects))
-                    {
-                        done.ExecuteNonQuery();
+                    using (SqlCommand command = new SqlCommand(query, connects))
+                    { 
+                        command.ExecuteNonQuery();
                         message = "done";
 
 

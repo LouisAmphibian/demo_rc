@@ -125,7 +125,7 @@ namespace demo_part2.Controllers
        
 
         [HttpPost]
-        public IActionResult Claim_Sub(Claim insert)
+        public IActionResult Claim_Sub(IFormFile file, Claim insert)
         {
             //assign 
             string module_name = insert.User_Name;
@@ -133,7 +133,38 @@ namespace demo_part2.Controllers
             string hour_rate = insert.Hour_Rate;
             string description = insert.Description;
 
-            string message = insert.insert_claim(module_name, hour_work, hour_rate, description);
+            string filename = "no file";
+
+            //file info
+            if (file != null && file.Length > 0)
+            {
+                //get file name
+                filename = Path.GetFileName(file.FileName);
+
+                //define 
+                string folderPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/pdf");
+
+                //Ensure the 
+                if (!Directory.Exists(folderPath))
+                {
+                    Directory.CreateDirectory(folderPath);
+
+                }
+
+                //Define the file path where the file will be saved 
+                string filePath = Path.Combine(folderPath, filename);
+
+                //save the file to specified path
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    file.CopyTo(stream);
+
+                    Console.WriteLine("File"+ filename + "is successfully uploaded ");
+                }
+            }
+
+
+            string message = insert.insert_claim(module_name, hour_work, hour_rate, description, filename);
 
 
             if (message == "done")
@@ -153,6 +184,13 @@ namespace demo_part2.Controllers
         public IActionResult Dashboard()
         {
             return View();
+        }
+
+        public IActionResult View_Claims()
+        {
+            Get_Claims collect =  new Get_Claims();
+
+            return View(collect);
         }
     }
 }
